@@ -1,6 +1,6 @@
 
-Litmus Reseller Email Anayltics - litmus_resmail
-================================================
+Litmus Reseller Email Analytics
+===============================
 
 This is a simple wrapper around the Litmus *reseller* Email Analytics API - 
 see the (at this writing) 
