@@ -1,0 +1,1060 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ea-api.litmus.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://ea-api.litmus.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ea-api.litmus.com/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="Create">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateResult" type="tns:Campaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Campaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BugHtml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Guid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReportGuid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Individual" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreatePrivate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePrivateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreatePrivateResult" type="tns:Campaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateIndividual">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateIndividualResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateIndividualResult" type="tns:Campaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePrivateIndividual">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePrivateIndividualResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreatePrivateIndividualResult" type="tns:Campaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartCampaignWithoutClearingData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartCampaignWithoutClearingDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartCampaignWithoutClearingDataResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartCampaignResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClearCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="startCampaign" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClearCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClearCampaignResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailClientUsageReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmailClientUsageReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmailClientUsageReportResult" type="tns:MailClientUsageReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MailClientUsageReport" />
+      <s:element name="GetEngagementReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEngagementReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEngagementReportResult" type="tns:EngagementReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EngagementReport">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GlancedOrUnreadCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SkimmedCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GlancedOrUnreadPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SkimmedPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GlancedOrUnreadAvgPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SkimmedAvgPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadAvgPercentage" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetActivityReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActivityReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActivityReportResult" type="tns:ActivityReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ActivityReport" />
+      <s:element name="GetGroupUsageReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupUsageReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGroupUsageReportResult" type="tns:GroupUsageReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GroupUsageReport">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRenderingCategoryReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRenderingCategoryReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRenderingCategoryReportResult" type="tns:RenderingCategoryReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RenderingCategoryReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMailClientEngagementReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMailClientEngagementReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMailClientEngagementReportResult" type="tns:MailClientEngagementReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MailClientEngagementReport">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetActivitySummaryReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActivitySummaryReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActivitySummaryReportResult" type="tns:ActivitySummaryReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ActivitySummaryReport">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PrintCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ForwardCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrintAvgCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ForwardAvgCount" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDetailedEngagementReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailedEngagementReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetailedEngagementReportResult" type="tns:DetailedEngagementReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DetailedEngagementReport">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Less2SecCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less4SecCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less6SecCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less8SecCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less10SecCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less12SecCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less14SecCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less16SecCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less18SecCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Over18SecCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less2SecPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less4SecPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less6SecPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less8SecPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less10SecPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less12SecPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less14SecPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less16SecPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less18SecPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Over18SecPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less2SecAvgPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less4SecAvgPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less6SecAvgPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less8SecAvgPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less10SecAvgPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less12SecAvgPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less14SecAvgPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less16SecAvgPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less18SecAvgPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Over18SecAvgPercentage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less2SecAvgCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less4SecAvgCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less6SecAvgCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less8SecAvgCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less10SecAvgCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less12SecAvgCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less14SecAvgCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less16SecAvgCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Less18SecAvgCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Over18SecAvgCount" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDetailedMailClientEngagementReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailedMailClientEngagementReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetailedMailClientEngagementReportResult" type="tns:DetailedMailClientEngagementReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DetailedMailClientEngagementReport" />
+      <s:element name="GetOpenCounts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuids" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetOpenCountsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOpenCountsResult" type="tns:OpenCountReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OpenCountReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OpenCounts">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAdvancedOpenCounts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuids" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdvancedOpenCountsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAdvancedOpenCountsResult" type="tns:AdvancedOpenCountReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AdvancedOpenCountReport" />
+      <s:element name="GetCampaignMetaData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCampaignMetaDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCampaignMetaDataResult" type="tns:CampaignMetaDataReport" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CampaignMetaDataReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MetaData" type="tns:CampaignMetaData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CampaignMetaData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CampaignGuid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CeatedAt" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SentAt" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiresAt" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetCampaignExpiration">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="expires" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCampaignExpirationResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetCampaignToNeverExpire">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="campaignGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCampaignToNeverExpireResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateSoapIn">
+    <wsdl:part name="parameters" element="tns:Create" />
+  </wsdl:message>
+  <wsdl:message name="CreateSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreatePrivateSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePrivate" />
+  </wsdl:message>
+  <wsdl:message name="CreatePrivateSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePrivateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateIndividualSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateIndividual" />
+  </wsdl:message>
+  <wsdl:message name="CreateIndividualSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateIndividualResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreatePrivateIndividualSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePrivateIndividual" />
+  </wsdl:message>
+  <wsdl:message name="CreatePrivateIndividualSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePrivateIndividualResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartCampaignWithoutClearingDataSoapIn">
+    <wsdl:part name="parameters" element="tns:StartCampaignWithoutClearingData" />
+  </wsdl:message>
+  <wsdl:message name="StartCampaignWithoutClearingDataSoapOut">
+    <wsdl:part name="parameters" element="tns:StartCampaignWithoutClearingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:StartCampaign" />
+  </wsdl:message>
+  <wsdl:message name="StartCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:StartCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClearCampaignSoapIn">
+    <wsdl:part name="parameters" element="tns:ClearCampaign" />
+  </wsdl:message>
+  <wsdl:message name="ClearCampaignSoapOut">
+    <wsdl:part name="parameters" element="tns:ClearCampaignResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailClientUsageReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmailClientUsageReport" />
+  </wsdl:message>
+  <wsdl:message name="GetEmailClientUsageReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmailClientUsageReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEngagementReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEngagementReport" />
+  </wsdl:message>
+  <wsdl:message name="GetEngagementReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEngagementReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActivityReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActivityReport" />
+  </wsdl:message>
+  <wsdl:message name="GetActivityReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActivityReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupUsageReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGroupUsageReport" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupUsageReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGroupUsageReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRenderingCategoryReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRenderingCategoryReport" />
+  </wsdl:message>
+  <wsdl:message name="GetRenderingCategoryReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRenderingCategoryReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMailClientEngagementReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMailClientEngagementReport" />
+  </wsdl:message>
+  <wsdl:message name="GetMailClientEngagementReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMailClientEngagementReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActivitySummaryReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActivitySummaryReport" />
+  </wsdl:message>
+  <wsdl:message name="GetActivitySummaryReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActivitySummaryReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailedEngagementReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetailedEngagementReport" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailedEngagementReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetailedEngagementReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailedMailClientEngagementReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetailedMailClientEngagementReport" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailedMailClientEngagementReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetailedMailClientEngagementReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOpenCountsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOpenCounts" />
+  </wsdl:message>
+  <wsdl:message name="GetOpenCountsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOpenCountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAdvancedOpenCountsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAdvancedOpenCounts" />
+  </wsdl:message>
+  <wsdl:message name="GetAdvancedOpenCountsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAdvancedOpenCountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignMetaDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCampaignMetaData" />
+  </wsdl:message>
+  <wsdl:message name="GetCampaignMetaDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCampaignMetaDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCampaignExpirationSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCampaignExpiration" />
+  </wsdl:message>
+  <wsdl:message name="SetCampaignExpirationSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCampaignExpirationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCampaignToNeverExpireSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCampaignToNeverExpire" />
+  </wsdl:message>
+  <wsdl:message name="SetCampaignToNeverExpireSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCampaignToNeverExpireResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ApiServiceSoap">
+    <wsdl:operation name="Create">
+      <wsdl:input message="tns:CreateSoapIn" />
+      <wsdl:output message="tns:CreateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePrivate">
+      <wsdl:input message="tns:CreatePrivateSoapIn" />
+      <wsdl:output message="tns:CreatePrivateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateIndividual">
+      <wsdl:input message="tns:CreateIndividualSoapIn" />
+      <wsdl:output message="tns:CreateIndividualSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePrivateIndividual">
+      <wsdl:input message="tns:CreatePrivateIndividualSoapIn" />
+      <wsdl:output message="tns:CreatePrivateIndividualSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartCampaignWithoutClearingData">
+      <wsdl:input message="tns:StartCampaignWithoutClearingDataSoapIn" />
+      <wsdl:output message="tns:StartCampaignWithoutClearingDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartCampaign">
+      <wsdl:input message="tns:StartCampaignSoapIn" />
+      <wsdl:output message="tns:StartCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClearCampaign">
+      <wsdl:input message="tns:ClearCampaignSoapIn" />
+      <wsdl:output message="tns:ClearCampaignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailClientUsageReport">
+      <wsdl:input message="tns:GetEmailClientUsageReportSoapIn" />
+      <wsdl:output message="tns:GetEmailClientUsageReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEngagementReport">
+      <wsdl:input message="tns:GetEngagementReportSoapIn" />
+      <wsdl:output message="tns:GetEngagementReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityReport">
+      <wsdl:input message="tns:GetActivityReportSoapIn" />
+      <wsdl:output message="tns:GetActivityReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupUsageReport">
+      <wsdl:input message="tns:GetGroupUsageReportSoapIn" />
+      <wsdl:output message="tns:GetGroupUsageReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRenderingCategoryReport">
+      <wsdl:input message="tns:GetRenderingCategoryReportSoapIn" />
+      <wsdl:output message="tns:GetRenderingCategoryReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMailClientEngagementReport">
+      <wsdl:input message="tns:GetMailClientEngagementReportSoapIn" />
+      <wsdl:output message="tns:GetMailClientEngagementReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivitySummaryReport">
+      <wsdl:input message="tns:GetActivitySummaryReportSoapIn" />
+      <wsdl:output message="tns:GetActivitySummaryReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailedEngagementReport">
+      <wsdl:input message="tns:GetDetailedEngagementReportSoapIn" />
+      <wsdl:output message="tns:GetDetailedEngagementReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailedMailClientEngagementReport">
+      <wsdl:input message="tns:GetDetailedMailClientEngagementReportSoapIn" />
+      <wsdl:output message="tns:GetDetailedMailClientEngagementReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOpenCounts">
+      <wsdl:input message="tns:GetOpenCountsSoapIn" />
+      <wsdl:output message="tns:GetOpenCountsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdvancedOpenCounts">
+      <wsdl:input message="tns:GetAdvancedOpenCountsSoapIn" />
+      <wsdl:output message="tns:GetAdvancedOpenCountsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignMetaData">
+      <wsdl:input message="tns:GetCampaignMetaDataSoapIn" />
+      <wsdl:output message="tns:GetCampaignMetaDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCampaignExpiration">
+      <wsdl:input message="tns:SetCampaignExpirationSoapIn" />
+      <wsdl:output message="tns:SetCampaignExpirationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCampaignToNeverExpire">
+      <wsdl:input message="tns:SetCampaignToNeverExpireSoapIn" />
+      <wsdl:output message="tns:SetCampaignToNeverExpireSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ApiServiceSoap" type="tns:ApiServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Create">
+      <soap:operation soapAction="http://ea-api.litmus.com/Create" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePrivate">
+      <soap:operation soapAction="http://ea-api.litmus.com/CreatePrivate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateIndividual">
+      <soap:operation soapAction="http://ea-api.litmus.com/CreateIndividual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePrivateIndividual">
+      <soap:operation soapAction="http://ea-api.litmus.com/CreatePrivateIndividual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartCampaignWithoutClearingData">
+      <soap:operation soapAction="http://ea-api.litmus.com/StartCampaignWithoutClearingData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartCampaign">
+      <soap:operation soapAction="http://ea-api.litmus.com/StartCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearCampaign">
+      <soap:operation soapAction="http://ea-api.litmus.com/ClearCampaign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailClientUsageReport">
+      <soap:operation soapAction="http://ea-api.litmus.com/GetEmailClientUsageReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEngagementReport">
+      <soap:operation soapAction="http://ea-api.litmus.com/GetEngagementReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityReport">
+      <soap:operation soapAction="http://ea-api.litmus.com/GetActivityReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupUsageReport">
+      <soap:operation soapAction="http://ea-api.litmus.com/GetGroupUsageReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRenderingCategoryReport">
+      <soap:operation soapAction="http://ea-api.litmus.com/GetRenderingCategoryReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMailClientEngagementReport">
+      <soap:operation soapAction="http://ea-api.litmus.com/GetMailClientEngagementReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivitySummaryReport">
+      <soap:operation soapAction="http://ea-api.litmus.com/GetActivitySummaryReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailedEngagementReport">
+      <soap:operation soapAction="http://ea-api.litmus.com/GetDetailedEngagementReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailedMailClientEngagementReport">
+      <soap:operation soapAction="http://ea-api.litmus.com/GetDetailedMailClientEngagementReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOpenCounts">
+      <soap:operation soapAction="http://ea-api.litmus.com/GetOpenCounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdvancedOpenCounts">
+      <soap:operation soapAction="http://ea-api.litmus.com/GetAdvancedOpenCounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignMetaData">
+      <soap:operation soapAction="http://ea-api.litmus.com/GetCampaignMetaData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCampaignExpiration">
+      <soap:operation soapAction="http://ea-api.litmus.com/SetCampaignExpiration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCampaignToNeverExpire">
+      <soap:operation soapAction="http://ea-api.litmus.com/SetCampaignToNeverExpire" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ApiServiceSoap12" type="tns:ApiServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Create">
+      <soap12:operation soapAction="http://ea-api.litmus.com/Create" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePrivate">
+      <soap12:operation soapAction="http://ea-api.litmus.com/CreatePrivate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateIndividual">
+      <soap12:operation soapAction="http://ea-api.litmus.com/CreateIndividual" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePrivateIndividual">
+      <soap12:operation soapAction="http://ea-api.litmus.com/CreatePrivateIndividual" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartCampaignWithoutClearingData">
+      <soap12:operation soapAction="http://ea-api.litmus.com/StartCampaignWithoutClearingData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartCampaign">
+      <soap12:operation soapAction="http://ea-api.litmus.com/StartCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearCampaign">
+      <soap12:operation soapAction="http://ea-api.litmus.com/ClearCampaign" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailClientUsageReport">
+      <soap12:operation soapAction="http://ea-api.litmus.com/GetEmailClientUsageReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEngagementReport">
+      <soap12:operation soapAction="http://ea-api.litmus.com/GetEngagementReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityReport">
+      <soap12:operation soapAction="http://ea-api.litmus.com/GetActivityReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupUsageReport">
+      <soap12:operation soapAction="http://ea-api.litmus.com/GetGroupUsageReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRenderingCategoryReport">
+      <soap12:operation soapAction="http://ea-api.litmus.com/GetRenderingCategoryReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMailClientEngagementReport">
+      <soap12:operation soapAction="http://ea-api.litmus.com/GetMailClientEngagementReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivitySummaryReport">
+      <soap12:operation soapAction="http://ea-api.litmus.com/GetActivitySummaryReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailedEngagementReport">
+      <soap12:operation soapAction="http://ea-api.litmus.com/GetDetailedEngagementReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailedMailClientEngagementReport">
+      <soap12:operation soapAction="http://ea-api.litmus.com/GetDetailedMailClientEngagementReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOpenCounts">
+      <soap12:operation soapAction="http://ea-api.litmus.com/GetOpenCounts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdvancedOpenCounts">
+      <soap12:operation soapAction="http://ea-api.litmus.com/GetAdvancedOpenCounts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignMetaData">
+      <soap12:operation soapAction="http://ea-api.litmus.com/GetCampaignMetaData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCampaignExpiration">
+      <soap12:operation soapAction="http://ea-api.litmus.com/SetCampaignExpiration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCampaignToNeverExpire">
+      <soap12:operation soapAction="http://ea-api.litmus.com/SetCampaignToNeverExpire" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ApiService">
+    <wsdl:port name="ApiServiceSoap" binding="tns:ApiServiceSoap">
+      <soap:address location="http://queue-production-448133392.us-east-1.elb.amazonaws.com/fingerprint/apiservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ApiServiceSoap12" binding="tns:ApiServiceSoap12">
+      <soap12:address location="http://queue-production-448133392.us-east-1.elb.amazonaws.com/fingerprint/apiservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
