@@ -12,9 +12,7 @@ RSpec.configure do |config|
       /lib\/rspec\/(core|expectations|matchers|mocks)/
       ]
 end
-Savon.configure do |config|
-  config.log = false    # turn off logging - for tests
-end
+Savon.configure { |cfg| cfg.log = false } # turn off SOAP logging - for tests
 fixtures = File.join(File.dirname(__FILE__), "fixtures")
 Savon::Spec::Fixture.path = fixtures
 litmus_wsdl = File.join(fixtures, 'litmus_wsdl.xml')
@@ -23,9 +21,9 @@ litmus_wsdl = File.join(fixtures, 'litmus_wsdl.xml')
 describe LitmusResmail::Analytics do
   let(:api) { LitmusResmail::Analytics.new('user', 'pw', litmus_wsdl) }
 
-  it 'create should create a new report' do
+  it 'stubbed _create should create a new report' do
     api = LitmusResmail::Analytics.new('user', 'pw')
-    report = api.create
+    report = api._create
     report.should_not be_nil
     report.bugHtml.should_not be_nil
   end
@@ -47,6 +45,23 @@ describe LitmusResmail::Analytics do
   def api_expects(method, extra_args = {})
       args = { :user => 'user', :password => 'pw'}.merge(extra_args)
       savon.expects(method).with(args)
+  end
+
+
+  describe '#create' do
+    it 'should pass campaignGuid parameter' do
+      api_expects('Create').returns
+      result = api.create
+    end
+
+    it 'should return an engagement report with many keys' do
+      # pending 'expected output'
+      savon.stubs('Create').returns(:dummy)
+      result = api.create
+      result.should include(:bug_html)
+      result.should include(:guid)
+      result.should include(:report_guid)
+    end
   end
 
   describe '#get_engagement_report' do
