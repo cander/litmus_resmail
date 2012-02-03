@@ -23,17 +23,16 @@ module LitmusResmail
     end
 
     def get_engagement_report(guid)
+      do_request('GetEngagementReport', 'campaignGuid' => guid)
     end
 
     def do_request(method, arg_hash = {})
-      args = { :user => @user, :password => @password }
-      args.merge!(arg_hash)
-      puts "calling #{method} with #{args.inspect}"
+      args = { :user => @user, :password => @password }.merge(arg_hash)
       response = @client.request(method) do
         soap.body = args
       end
 
-      # not sure what more to do for error checking, yet
+      # not sure (yet) what more to do for error checking,
       return response if response.to_xml.empty?       # happens when mocking with savon-spec
 
       # strip off method_response and method_result wrappers

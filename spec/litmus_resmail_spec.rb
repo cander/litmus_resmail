@@ -21,6 +21,8 @@ litmus_wsdl = File.join(fixtures, 'litmus_wsdl.xml')
 
 
 describe LitmusResmail::Analytics do
+  let(:api) { LitmusResmail::Analytics.new('user', 'pw', litmus_wsdl) }
+
   it 'create should create a new report' do
     api = LitmusResmail::Analytics.new('user', 'pw')
     report = api.create
@@ -29,16 +31,36 @@ describe LitmusResmail::Analytics do
   end
 
   describe '#do_request' do
-    let(:api) { LitmusResmail::Analytics.new('user', 'pw', litmus_wsdl) }
-
     it 'should call method and pass arguments' do
       savon.expects('GetEngagementReport').with(:user => 'user', :password => 'pw', :arg => 'some arg').returns
       api.do_request('GetEngagementReport', :arg => 'some arg')
     end
 
-    it 'should peel off nested ressults' do
+    it 'should peel off nested results' do
       savon.stubs('GetEngagementReport').returns(:all_zeroes)
       result = api.do_request('GetEngagementReport')
+      result.should include(:glanced_or_unread_count)
+    end
+  end
+
+  # merge the user_name and password into the 'with' clause to check args
+  def api_expects(method, extra_args = {})
+      args = { :user => 'user', :password => 'pw'}.merge(extra_args)
+      savon.expects(method).with(args)
+  end
+
+  describe '#get_engagement_report' do
+    it 'should pass campaignGuid parameter' do
+      guid = 'a-g001d'
+      api_expects('GetEngagementReport', 'campaignGuid' => guid).returns
+      result = api.get_engagement_report(guid)
+    end
+
+    it 'should return an engagement report with many keys' do
+      guid = 'a-g001d'
+      savon.stubs('GetEngagementReport').returns(:all_zeroes)
+      result = api.get_engagement_report(guid)
+      result.size.should be >= 8
       result.should include(:glanced_or_unread_count)
     end
   end
