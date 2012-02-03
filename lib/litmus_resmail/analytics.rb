@@ -6,10 +6,15 @@ module LitmusResmail
     def initialize(user, password, wsdl_file = nil)
       @user = user
       @password = password
+
       # could make this a factory method to aid in mocking/stubbing
       @client = Savon::Client.new do
-         # set the wsdl.endpoint if no file
-         wsdl.document = wsdl_file if wsdl_file
+         if wsdl_file
+           wsdl.document = wsdl_file
+          else
+            wsdl.endpoint = "http://queue-production-448133392.us-east-1.elb.amazonaws.com/fingerprint/apiservice.asmx"
+            wsdl.namespace = "http://ea-api.litmus.com"
+          end
       end
     end
 
