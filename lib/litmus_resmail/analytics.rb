@@ -27,12 +27,16 @@ module LitmusResmail
                                 :individual => false)
     end
 
+    # NB: for some reason, we have to use :method_names as symbols instead
+    # of string in order to get the right SOAP header generated.  However,
+    # we have to use strings when testing with saveon-spec.  Ugh!
+
     def create
-      do_request('Create')
+      do_request(:create)
     end
 
     def get_engagement_report(guid)
-      do_request('GetEngagementReport', 'campaignGuid' => guid)
+      do_request(:get_engagement_report, 'campaignGuid' => guid)
     end
 
     def do_request(method, arg_hash = {})
