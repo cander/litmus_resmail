@@ -18,18 +18,9 @@ module LitmusResmail
       end
     end
 
-    # Conflusingly (by their own admission), what most people would call a
-    # campaign, Litmus calls a "report".
-    def _create()
-      result = Hashie::Mash.new(:bugHtml => '<em>tracking bug goes here</em>',
-                                :guid => Time.now.to_s,
-                                :reportGuid => "report of #{Time.now}",
-                                :individual => false)
-    end
-
     # NB: for some reason, we have to use :method_names as symbols instead
-    # of string in order to get the right SOAP header generated.  However,
-    # we have to use strings when testing with saveon-spec.  Ugh!
+    # of strings in order to get the right SOAP header generated.
+    # Luckily, savon does capitalize the first letter of the method name correctly
 
     def create
       do_request(:create)
@@ -52,7 +43,7 @@ module LitmusResmail
       resp_key = "#{method.to_s.snakecase}_response".to_sym
       res_key = "#{method.to_s.snakecase}_result".to_sym
 
-      response[resp_key][res_key]
+      Hashie::Mash.new(response[resp_key][res_key])
     end
   end
 end

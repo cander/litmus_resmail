@@ -21,12 +21,8 @@ litmus_wsdl = File.join(fixtures, 'litmus_wsdl.xml')
 describe LitmusResmail::Analytics do
   let(:api) { LitmusResmail::Analytics.new('user', 'pw', litmus_wsdl) }
 
-  it 'stubbed _create should create a new report' do
-    api = LitmusResmail::Analytics.new('user', 'pw')
-    report = api._create
-    report.should_not be_nil
-    report.bugHtml.should_not be_nil
-  end
+    # NB: we have to use strings (with capital First Letter) when testing with
+    # saveon-spec even though we use :symbols in the savon requests.
 
   describe '#do_request' do
     it 'should call method and pass arguments' do
@@ -37,7 +33,7 @@ describe LitmusResmail::Analytics do
     it 'should peel off nested results' do
       savon.stubs('GetEngagementReport').returns(:all_zeroes)
       result = api.do_request('GetEngagementReport')
-      result.should include(:glanced_or_unread_count)
+      result.glanced_or_unread_count.should_not be_nil
     end
   end
 
@@ -54,13 +50,13 @@ describe LitmusResmail::Analytics do
       result = api.create
     end
 
-    it 'should return an engagement report with many keys' do
+    it 'should return IDs and HTML for a new compaign' do
       # pending 'expected output'
       savon.stubs('Create').returns(:dummy)
       result = api.create
-      result.should include(:bug_html)
-      result.should include(:guid)
-      result.should include(:report_guid)
+      result.bug_html.should_not be_nil
+      result.guid.should_not be_nil
+      result.report_guid.should_not be_nil
     end
   end
 
