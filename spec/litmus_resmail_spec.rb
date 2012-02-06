@@ -1,24 +1,9 @@
+require 'spec_helper'
 require 'litmus_resmail'
-require 'savon_spec'
-
-# TODO: put this config stuff in a helper file
-RSpec.configure do |config|
-  config.include Savon::Spec::Macros
-  config.backtrace_clean_patterns = [
-      /\/lib\d*\/ruby\//,
-      /bin\//,
-      #/gems/,
-      /spec\/spec_helper\.rb/,
-      /lib\/rspec\/(core|expectations|matchers|mocks)/
-      ]
-end
-Savon.configure { |cfg| cfg.log = false } # turn off SOAP logging - for tests
-fixtures = File.join(File.dirname(__FILE__), "fixtures")
-Savon::Spec::Fixture.path = fixtures
-litmus_wsdl = File.join(fixtures, 'litmus_wsdl.xml')
 
 
 describe LitmusResmail::Analytics do
+  litmus_wsdl = File.join(Savon::Spec::Fixture.path, 'litmus_wsdl.xml')
   let(:api) { LitmusResmail::Analytics.new('user', 'pw', litmus_wsdl) }
 
     # NB: we have to use strings (with capital First Letter) when testing with
