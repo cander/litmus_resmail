@@ -22,12 +22,25 @@ module LitmusResmail
     # of strings in order to get the right SOAP header generated.
     # Luckily, savon does capitalize the first letter of the method name correctly
 
+    # campaign management
+
     def create
       do_request(:create)
     end
 
     def get_campaign_meta_data(guid)
       do_request(:get_campaign_meta_data, 'campaignGuid' => guid)
+    end
+
+    def start_campaign(guid)
+      # NB: returns nothing - need to "fix" Hashie result below
+      do_request(:start_campaign, 'campaignGuid' => guid)
+    end
+
+    # activity/engagement reports
+
+    def get_activity_summary_report(guid)
+      do_request(:get_activity_summary_report, 'campaignGuid' => guid)
     end
 
     def get_email_client_usage_report(guid)
@@ -39,20 +52,14 @@ module LitmusResmail
       do_request(:get_engagement_report, 'campaignGuid' => guid)
     end
 
-    def get_activity_summary_report(guid)
-      do_request(:get_activity_summary_report, 'campaignGuid' => guid)
-    end
-
     def get_open_counts(guid1, guid2)
       # this will require manually building up the XML -ugh
       # TODO: break the response unpacking out of do_request
       do_request(:get_open_counts, 'campaignGuids' => [guid1, guid2])
     end
 
-    def start_campaign(guid)
-      # NB: returns nothing - need to "fix" Hashie result below
-      do_request(:start_campaign, 'campaignGuid' => guid)
-    end
+
+    # internal methods
 
     def do_request(method, arg_hash = {})
       args = { :user => @user, :password => @password }.merge(arg_hash)
