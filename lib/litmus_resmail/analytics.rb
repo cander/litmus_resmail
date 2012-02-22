@@ -26,8 +26,32 @@ module LitmusResmail
       do_request(:create)
     end
 
+    def get_campaign_meta_data(guid)
+      do_request(:get_campaign_meta_data, 'campaignGuid' => guid)
+    end
+
+    def get_email_client_usage_report(guid)
+      # returns an empty result - wtf?
+      do_request(:get_email_client_usage_report, 'campaignGuid' => guid)
+    end
+
     def get_engagement_report(guid)
       do_request(:get_engagement_report, 'campaignGuid' => guid)
+    end
+
+    def get_activity_summary_report(guid)
+      do_request(:get_activity_summary_report, 'campaignGuid' => guid)
+    end
+
+    def get_open_counts(guid1, guid2)
+      # this will require manually building up the XML -ugh
+      # TODO: break the response unpacking out of do_request
+      do_request(:get_open_counts, 'campaignGuids' => [guid1, guid2])
+    end
+
+    def start_campaign(guid)
+      # NB: returns nothing - need to "fix" Hashie result below
+      do_request(:start_campaign, 'campaignGuid' => guid)
     end
 
     def do_request(method, arg_hash = {})
