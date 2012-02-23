@@ -5,6 +5,8 @@ require 'litmus_resmail'
 describe LitmusResmail::Analytics do
   litmus_wsdl = File.join(Savon::Spec::Fixture.path, 'litmus_wsdl.xml')
   let(:api) { LitmusResmail::Analytics.new('user', 'pw', litmus_wsdl) }
+  guid = 'a-g001d'
+
 
     # NB: we have to use strings (with capital First Letter) when testing with
     # saveon-spec even though we use :symbols in the savon requests.
@@ -41,13 +43,11 @@ describe LitmusResmail::Analytics do
 
   describe '#start_campaign' do
     it 'should pass campaignGuid parameter' do
-      guid = 'a-g001d'
       api_expects('StartCampaign', 'campaignGuid' => guid).returns
       result = api.start_campaign(guid)
     end
 
     it 'should return IDs and HTML for a new compaign' do
-      guid = 'a-g001d'
       savon.stubs('StartCampaign').returns(:success)
       result = api.start_campaign(guid)
     end
@@ -55,13 +55,11 @@ describe LitmusResmail::Analytics do
 
   describe '#get_engagement_report' do
     it 'should pass campaignGuid parameter' do
-      guid = 'a-g001d'
       api_expects('GetEngagementReport', 'campaignGuid' => guid).returns
       result = api.get_engagement_report(guid)
     end
 
     it 'should return an engagement report with many keys' do
-      guid = 'a-g001d'
       savon.stubs('GetEngagementReport').returns(:all_zeroes)
       result = api.get_engagement_report(guid)
       result.size.should be >= 8
