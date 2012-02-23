@@ -15,6 +15,7 @@ Example Usage
 -------------
 These are API calls I have seen work and return results that make some
 sense to me.
+
     api = LitmusResmail::Analytics.new('user', 'pw')
     # create a new campaign
     campaign = api.create
@@ -28,6 +29,12 @@ sense to me.
 
     # shows simple read vs. skimmed stats - does not count Gmail users!
     result = api.get_engagement_report(guid)
+
+    # shows the gory details of reading/skimming habits
+    result = api.get_detailed_engagement_report(guid)
+
+    # returns a count of something - not sure what
+    result = api.get_group_usage_report(guid)
 
 Caveats
 -------
