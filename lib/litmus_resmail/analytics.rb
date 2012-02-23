@@ -39,8 +39,18 @@ module LitmusResmail
 
     # activity/engagement reports
 
+    def get_activity_report(guid)
+      # returns an empty result - wtf?
+      do_request(:get_activity_report, 'campaignGuid' => guid)
+    end
+
     def get_activity_summary_report(guid)
       do_request(:get_activity_summary_report, 'campaignGuid' => guid)
+    end
+
+    def get_detailed_engagement_report(guid)
+      # returns an empty result - wtf?
+      do_request(:get_detailed_engagement_report, 'campaignGuid' => guid)
     end
 
     def get_email_client_usage_report(guid)
@@ -52,10 +62,23 @@ module LitmusResmail
       do_request(:get_engagement_report, 'campaignGuid' => guid)
     end
 
+    def get_group_usage_report(guid)
+      do_request(:get_group_usage_report, 'campaignGuid' => guid)
+    end
+
+    def get_mail_client_engagement_report(guid)
+      do_request(:get_mail_client_engagement_report, 'campaignGuid' => guid)
+    end
+
     def get_open_counts(guid1, guid2)
       # this will require manually building up the XML -ugh
       # TODO: break the response unpacking out of do_request
       do_request(:get_open_counts, 'campaignGuids' => [guid1, guid2])
+    end
+
+    def get_rendering_category_report(guid)
+      # returns an empty result - wtf?
+      do_request(:get_rendering_category_report, 'campaignGuid' => guid)
     end
 
 
