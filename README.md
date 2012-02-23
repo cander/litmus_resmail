@@ -8,7 +8,12 @@ see the (at this writing)
 
 Install
 -------
-`gem install litmus_resmail`
+I haven't released this as an official gem yet.  So, I use Bundler and put
+this in my Gemfile:
+
+    gem 'litmus_resmail', :git => 'git@github.com:cander/litmus_resmail.git'
+
+Someday, this will work - `gem install litmus_resmail`
 
 
 Example Usage
