@@ -30,18 +30,26 @@ describe LitmusResmail::Analytics do
 
 
   describe '#create' do
-    it 'should pass campaignGuid parameter' do
-      api_expects('Create').returns
-      result = api.create
-    end
-
     it 'should return IDs and HTML for a new compaign' do
-      # pending 'expected output'
       savon.stubs('Create').returns(:dummy)
       result = api.create
       result.bug_html.should_not be_nil
       result.guid.should_not be_nil
       result.report_guid.should_not be_nil
+    end
+  end
+
+  describe '#start_campaign' do
+    it 'should pass campaignGuid parameter' do
+      guid = 'a-g001d'
+      api_expects('StartCampaign', 'campaignGuid' => guid).returns
+      result = api.start_campaign(guid)
+    end
+
+    it 'should return IDs and HTML for a new compaign' do
+      guid = 'a-g001d'
+      savon.stubs('StartCampaign').returns(:success)
+      result = api.start_campaign(guid)
     end
   end
 

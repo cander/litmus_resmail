@@ -33,8 +33,11 @@ module LitmusResmail
     end
 
     def start_campaign(guid)
-      # NB: returns nothing - need to "fix" Hashie result below
-      do_request(:start_campaign, 'campaignGuid' => guid)
+      response = send_request(:start_campaign, 'campaignGuid' => guid)
+
+      return response if response.to_xml.empty?       # happens when mocking with savon-spec
+
+      response[:start_campaign_response][:start_campaign_result]
     end
 
     # activity/engagement reports
@@ -73,7 +76,8 @@ module LitmusResmail
     def get_open_counts(guid1, guid2)
       # this will require manually building up the XML -ugh
       # TODO: break the response unpacking out of do_request
-      do_request(:get_open_counts, 'campaignGuids' => [guid1, guid2])
+      # do_request(:get_open_counts, 'campaignGuids' => [guid1, guid2])
+      raise "get_open_counts is not implemented, yet"
     end
 
     def get_rendering_category_report(guid)
@@ -93,6 +97,23 @@ module LitmusResmail
       # not sure (yet) what more to do for error checking,
       return response if response.to_xml.empty?       # happens when mocking with savon-spec
 
+      # strip off method_response and method_result wrappers
+      resp_key = "#{method.to_s.snakecase}_response".to_sym
+      res_key = "#{method.to_s.snakecase}_result".to_sym
+
+      Hashie::Mash.new(response[resp_key][res_key])
+    end
+
+    def send_request(method, arg_hash = {})
+      args = { :user => @user, :password => @password }.merge(arg_hash)
+      response = @client.request(method) do
+        soap.body = args
+      end
+
+      response
+    end
+
+    def extract_result(response)
       # strip off method_response and method_result wrappers
       resp_key = "#{method.to_s.snakecase}_response".to_sym
       res_key = "#{method.to_s.snakecase}_result".to_sym
