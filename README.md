@@ -3,8 +3,10 @@ Litmus Reseller Email Analytics
 ===============================
 
 This is a simple wrapper around the Litmus *reseller* Email Analytics API - 
-see the (at this writing) 
-[limited documentation](http://http://docs.litmus.com/w/page/31510574/Email%20Analytics%20SOAP%20API)
+see the
+[limited official documentation](http://http://docs.litmus.com/w/page/31510574/Email%20Analytics%20SOAP%20API)
+or see the [unofficial API documentation](https://github.com/cander/litmus_resmail/wiki/Litmus-API-Documentation)
+I've been writing as I figure things out.
 
 Install
 -------
@@ -30,6 +32,12 @@ sense to me.
     result = api.start_campaign(guid)
 
     # useful to verify that create worked
+    result = api.get_campaign_meta_data(guid)
+
+    # need to start the campaign before collecting stats
+    succeeded = api.start_campaign(guid)
+
+    # sent_at and expires_at should be non-null after starting campaign
     result = api.get_campaign_meta_data(guid)
 
     # shows simple read vs. skimmed stats - does not count Gmail users!
