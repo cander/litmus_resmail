@@ -89,19 +89,12 @@ module LitmusResmail
     # internal methods
 
     def do_request(method, arg_hash = {})
-      args = { :user => @user, :password => @password }.merge(arg_hash)
-      response = @client.request(method) do
-        soap.body = args
-      end
+      response = send_request(method, arg_hash)
 
       # not sure (yet) what more to do for error checking,
       return response if response.to_xml.empty?       # happens when mocking with savon-spec
 
-      # strip off method_response and method_result wrappers
-      resp_key = "#{method.to_s.snakecase}_response".to_sym
-      res_key = "#{method.to_s.snakecase}_result".to_sym
-
-      Hashie::Mash.new(response[resp_key][res_key])
+      extract_result(method, response)
     end
 
     def send_request(method, arg_hash = {})
@@ -113,8 +106,8 @@ module LitmusResmail
       response
     end
 
-    def extract_result(response)
-      # strip off method_response and method_result wrappers
+    # strip off method_response and method_result wrappers and package in a hashie
+    def extract_result(method, response)
       resp_key = "#{method.to_s.snakecase}_response".to_sym
       res_key = "#{method.to_s.snakecase}_result".to_sym
 
