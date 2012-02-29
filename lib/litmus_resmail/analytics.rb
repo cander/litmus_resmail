@@ -52,7 +52,6 @@ module LitmusResmail
     end
 
     def get_detailed_engagement_report(guid)
-      # returns an empty result - wtf?
       do_request(:get_detailed_engagement_report, 'campaignGuid' => guid)
     end
 
