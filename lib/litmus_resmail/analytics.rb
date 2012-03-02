@@ -3,7 +3,7 @@ require 'savon'
 
 module LitmusResmail
   class Analytics
-    def initialize(user, password, wsdl_file = nil)
+    def initialize(user, password, wsdl_file)
       @user = user
       @password = password
 
@@ -12,6 +12,9 @@ module LitmusResmail
          if wsdl_file
            wsdl.document = wsdl_file
           else
+            # bug-let: wsdl_file used to be optional, but the case of the first
+            # character of method names ends up lower-cased, which doesn't work.
+            # should fix that
             wsdl.endpoint = "http://queue-production-448133392.us-east-1.elb.amazonaws.com/fingerprint/apiservice.asmx"
             wsdl.namespace = "http://ea-api.litmus.com"
           end
