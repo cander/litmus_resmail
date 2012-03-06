@@ -34,6 +34,10 @@ module LitmusResmail
       do_request(:create)
     end
 
+    def create_individual
+      do_request(:create_individual)
+    end
+
     def get_campaign_meta_data(guid)
       do_request(:get_campaign_meta_data, 'campaignGuid' => guid)
     end
