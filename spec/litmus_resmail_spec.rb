@@ -3,8 +3,7 @@ require 'litmus_resmail'
 
 
 describe LitmusResmail::Analytics do
-  litmus_wsdl = File.join(Savon::Spec::Fixture.path, 'litmus_wsdl.xml')
-  let(:api) { LitmusResmail::Analytics.new('user', 'pw', litmus_wsdl) }
+  let(:api) { LitmusResmail::Analytics.new('user', 'pw') }
   guid = 'a-g001d'
 
 
