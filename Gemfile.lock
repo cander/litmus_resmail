@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    litmus_resmail (0.0.3)
+    litmus_resmail (0.0.5)
       hashie
       savon
 
